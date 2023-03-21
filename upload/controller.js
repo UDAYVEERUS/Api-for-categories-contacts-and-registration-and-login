@@ -8,6 +8,7 @@ cloudinary.config({
 const uploadImage = async(request,response)=>{
     const files = request.files.photo
     console.log(typeof files.length)
+    try{
     if (typeof files.length === "undefined") {
         // Upload the image
         console.log("here single file")
@@ -31,8 +32,13 @@ const uploadImage = async(request,response)=>{
             response.json({data:result})
 
         })
+
         
     }
+}
+catch(err){
+    console.log(err)
+}
     
 }
 

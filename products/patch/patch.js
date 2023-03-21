@@ -11,12 +11,14 @@ const productsUpdate = async (req, res, next) => {
                 status: 201
             })
         }
+        console.log(products_response)
         return res.status(402).json({
             message: "unable to update products",
             status: 402
         })
     }
     catch (err) {
+        console.log(err)
         return res.status(500).json({
             message: "something went wrong",
             data: err,
