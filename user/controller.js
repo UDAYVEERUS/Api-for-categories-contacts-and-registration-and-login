@@ -5,7 +5,6 @@ const postUser = async (req, res, next) => {
     try {
 
         const { name, email, mobile, password } = req.body
-        // console.log(req.body,"here")
         const passwordHash = await passwordGenerate(password)
         const user_response = await user.create({
             name,
@@ -13,7 +12,6 @@ const postUser = async (req, res, next) => {
             mobile,
             password: passwordHash
         })
-        console.log(user_response.name, "here")
 
         if (user_response) {
             return res.status(201).json({
