@@ -12,7 +12,7 @@ const postUser = async (req, res, next) => {
             mobile,
             password: passwordHash
         })
-
+        console.log(user_response,"herere")
         if (user_response) {
             return res.status(201).json({
                 message: "successfully registred",
@@ -26,6 +26,7 @@ const postUser = async (req, res, next) => {
         })
     }
     catch (err) {
+        consol.log(err)
         return res.status(500).json({
             message: "something went worng",
             data: err,

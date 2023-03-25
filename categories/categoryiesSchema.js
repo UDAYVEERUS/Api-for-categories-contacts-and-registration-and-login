@@ -9,7 +9,7 @@ const categoriesSchema = new Schema({
     },
     onHome: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     },
     image: {
