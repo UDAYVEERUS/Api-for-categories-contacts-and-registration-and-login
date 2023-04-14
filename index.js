@@ -1,5 +1,12 @@
 const express = require('express')
+const cors = require("cors")
 const app = express()
+
+
+
+
+app.use(cors({"Access-Control-Allow-Origin": "*"}))
+
 app.use(express.json())
 
 const compression = require("compression")
@@ -8,8 +15,6 @@ app.use(compression())
 const connectToMongo = require('./common/database')
 connectToMongo()
 
-const cors = require("cors")
-app.use(cors())
 
 app.use("/user", require('./user/route'))
 app.use("/message", require('./contact/route'))

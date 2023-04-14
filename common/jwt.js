@@ -13,7 +13,7 @@ const verifyJwt = async(req, res, next) => {
     const validate = await jwt.verify(token, SECRET_JWT)
     if(validate){
         req.Jwt_Data = validate
-        return next
+        return next()
     }
     return res.status(402).json({
         message : "invalid jwt",

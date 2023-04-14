@@ -25,7 +25,10 @@ const loginPost = async (req, res, next) => {
             }
         }
         const authToken = await jwt.sign(data,SECRET_JWT)
-        return res.status(201).json({success:"login success",token:`${authToken}`})
+        return res.status(201).json({
+            message:"login success",
+            token: authToken
+        })
     }
     catch (err) {
         return res.status(500).json({

@@ -26,7 +26,7 @@ const postUser = async (req, res, next) => {
         })
     }
     catch (err) {
-        consol.log(err)
+        console.log(err)
         return res.status(500).json({
             message: "something went worng",
             data: err,
@@ -38,8 +38,32 @@ const postUser = async (req, res, next) => {
 const getUser = async (req, res, next) => {
     try {
 
-        
-      const user_response = await user.find({})
+
+        const user_response = await user.find({})
+        if (user_response) {
+            return res.status(201).json({
+                message: "users fetched successfully",
+                data: user_response,
+                status: 201
+            })
+        }
+        return res.status(402).json({
+            message: "unable to fetch users",
+            status: 402
+        })
+    }
+    catch (err) {
+        return res.status(500).json({
+            message: "something went worng",
+            data: err,
+            status: 500
+        })
+    }
+}
+const userGetById = async (req, res, next) => {
+    try {
+
+        const user_response = await user.findById(req.Jwt_Data.user.id)
         if (user_response) {
             return res.status(201).json({
                 message: "users fetched successfully",
@@ -61,4 +85,4 @@ const getUser = async (req, res, next) => {
     }
 }
 
-module.exports = {postUser, getUser}
+module.exports = { postUser, getUser, userGetById }
